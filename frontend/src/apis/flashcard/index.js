@@ -32,7 +32,7 @@ export async function createFlashcardReq({question, answer}) {
 
 export async function updateFlashcardReq({id, correct}) {
     try {
-        const reponse = await axiosInstance.put(`/flashcards/${id}`, {correct}, {
+        const reponse = await axiosInstance.put(`/flashcards/${id}`, { correct : correct}, {
             headers : {
                 "flashcard-token" : localStorage.getItem("flashcard-token")
             }
@@ -47,7 +47,7 @@ export async function updateFlashcardReq({id, correct}) {
 
 export async function  deleteFlashcardReq(flashcardId) {
     try {
-        const resposne = await axiosInstance.delete(`//flashcards/${flashcardId}`, {
+        const resposne = await axiosInstance.delete(`/flashcards/${flashcardId}`, {
             headers : {
                 "flashcard-token" : localStorage.getItem("flashcard-token")
             }
