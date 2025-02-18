@@ -15,10 +15,10 @@ function CardContainer() {
   }, [data])
 
   return (
-    <div className='relative h-[calc(100vh-150px)] text-center mt-5 ms:mt-10 mx-4 w-full max-w-[300px] rounded-lg'>
+    <div className='relative h-[calc(100vh-80px)] text-center mt-5 ms:mt-10 mx-4 w-full max-w-[300px] rounded-lg'>
       {isLoading && <div className='p-3 grid place-content-center'><SpinnerLoader/></div>}
       {isError && <p>Something went wrong</p>}
-      
+      {isSuccess && flashcards && flashcards.length > 0 &&  <h3 className='mb-5'>{`😮 You have ${flashcards.length} flashcards due today.`}</h3>}
       <AnimatePresence>
         {isSuccess && flashcards && flashcards.map((flashcard, index) => (
           <motion.div
