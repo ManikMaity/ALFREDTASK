@@ -1,13 +1,15 @@
-
-import './App.css'
-import { Button } from './components/ui/button'
+import { QueryClient, QueryClientProvider } from "react-query";
+import "./App.css";
+import AppRoute from "./pages/AppRoute";
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
-    <main>
-      <Button>Click</Button>
-    </main>
-  )
+    <QueryClientProvider client={queryClient}>
+      <AppRoute />
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;
