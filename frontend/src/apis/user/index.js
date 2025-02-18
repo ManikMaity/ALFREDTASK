@@ -15,7 +15,7 @@ export async function signupRequest({email, password}) {
 export async function signinRequest({email, password}) {
     try {
         const response = await axiosInstance.post("/user/signin", {email, password});
-        return response.data;
+        return response.data.data;
     }
     catch(err){
         throw err.response.data;

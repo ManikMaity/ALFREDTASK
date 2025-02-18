@@ -3,11 +3,13 @@ import { useToast } from "../use-toast";
 import { useMutation } from "react-query";
 import { signinRequest } from "@/apis/user";
 import { getErrorMessage } from "@/lib/utilFunc";
+import { useNavigate } from "react-router-dom";
 
 function useSignin() {
 
     const { toast } = useToast();
     const {signin} = useAuthStore();
+    const navigator = useNavigate();
   
   
     const {data, mutateAsync : signinMutateAsync, isError, isLoading, isSuccess, error} = useMutation({
@@ -21,6 +23,9 @@ function useSignin() {
           });
           localStorage.setItem("flashcard-token", data.token);
           signin(data, data.token);
+          setTimeout(() => {
+              navigator("/");
+          }, 2000);
       },
       onError : (error) => {
           toast({
