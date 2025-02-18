@@ -1,5 +1,5 @@
 import express from "express";
-import { PORT } from "./config/server.config.js";
+import { FRONTEND_URL, PORT } from "./config/server.config.js";
 import connectDB from "./config/db.config.js";
 import apiRouter from "./routes/api.route.js";
 import cors from "cors";
@@ -7,7 +7,7 @@ import cors from "cors";
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: FRONTEND_URL,
     credentials: true
 }));
 
