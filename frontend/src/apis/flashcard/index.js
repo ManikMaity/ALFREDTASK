@@ -29,3 +29,18 @@ export async function createFlashcardReq({question, answer}) {
         throw error.response.data;
     }
 }
+
+export async function updateFlashcardReq({id, correct}) {
+    try {
+        const reponse = await axiosInstance.put(`/flashcards/${id}`, {correct}, {
+            headers : {
+                "flashcard-token" : localStorage.getItem("flashcard-token")
+            }
+        });
+
+        return reponse.data;
+    }
+    catch(error){
+        throw error.response.data;
+    }
+}
