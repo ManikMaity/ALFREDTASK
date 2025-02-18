@@ -1,9 +1,13 @@
+import Header from "@/components/molicules/Header"
+import CardContainer from "@/components/organisms/CardContainer"
+
 
 function HomePage() {
   return (
-    <div>
-      Thois is the home page
-    </div>
+    <main>
+      <CardContainer/>
+      <Header/>
+    </main>
   )
 }
 
