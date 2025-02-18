@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import { customErrorResponse, customSuccessResponse } from "../utils/customResponse.js";
-import { createFlashcardService, getUserFlashcardsService } from "../services/flashcard.service.js";
+import { createFlashcardService, deleteFlashcardService, getUserFlashcardsService, updateFlashcardService } from "../services/flashcard.service.js";
 
 function handleError(res, err) {
   if (err.statusCode) {
@@ -23,7 +23,6 @@ export async function getUserFlashcardsController(req, res) {
   }
 }
 
-
 export async function createFlashcardController(req, res) {
   try {
     const {id} = req.user;
@@ -33,5 +32,30 @@ export async function createFlashcardController(req, res) {
   }
   catch(err){
     handleError(res, err);
+  }
+}
+
+export async function updateFlashcardController(req, res) {
+  try {
+    const {id} = req.user;
+    const flashcardId = req.params.id;
+    const {correct} = req.body;
+    const updatedFlashcard = await updateFlashcardService(id, flashcardId, correct);
+    res.status(StatusCodes.OK).json(customSuccessResponse("Flashcard updated successfully", updatedFlashcard));
+  }
+  catch(error){
+    handleError(res, error);
+  }
+}
+
+export async function deleteFlashcardController(req, res) {
+  try {
+    const {id} = req.user;
+    const flashcardId = req.params.id;
+    const deletedFlashcard = await deleteFlashcardService(flashcardId, id);
+    res.status(StatusCodes.OK).json(customSuccessResponse("Flashcard deleted successfully", deletedFlashcard));
+  }
+  catch(error){
+    handleError(res, error);
   }
 }
