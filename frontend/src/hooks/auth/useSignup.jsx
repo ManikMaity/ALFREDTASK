@@ -1,11 +1,13 @@
-import { useMutation } from "@tanstack/react-query";
 import { signupRequest } from "@/apis/user";
 import { useToast } from "../use-toast";
 import { getErrorMessage } from "@/lib/utilFunc";
+import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
 
 function useSignup() {
 
     const { toast } = useToast();
+    const navigator = useNavigate();
 
     
     const { mutateAsync : signupMutateAsync, isLoading, error, data, isSuccess } = useMutation({
@@ -16,6 +18,9 @@ function useSignup() {
                 description: "You will be redirected to signin page in a few seconds",
                 type: "success",
             });
+            setTimeout(() => {
+                navigator("/signin");
+            }, 3000)
         },
         onError: (error) => {
             toast({
