@@ -44,3 +44,18 @@ export async function updateFlashcardReq({id, correct}) {
         throw error.response.data;
     }
 }
+
+export async function  deleteFlashcardReq(flashcardId) {
+    try {
+        const resposne = await axiosInstance.delete(`//flashcards/${flashcardId}`, {
+            headers : {
+                "flashcard-token" : localStorage.getItem("flashcard-token")
+            }
+        })
+
+        return resposne.data;
+    }
+    catch(error){
+        throw error.response.data;
+    }
+}
