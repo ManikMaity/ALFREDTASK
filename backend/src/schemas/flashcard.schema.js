@@ -6,6 +6,11 @@ const flashcardSchema = new Schema({
         required: true,
         trim: true,
     },
+    creatorId : {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
     answer: {
         type: String,
         required: true,

@@ -5,7 +5,7 @@ const flashcardRepo = {
     ...crudFunctions(flashcardModel),
     getTodaysUserFlashcards : async function (id) {
         const flashcards = await flashcardModel.find({
-            id : id,
+            creatorId : id,
             nextReviewDate : {
                 $lt : new Date()
             },

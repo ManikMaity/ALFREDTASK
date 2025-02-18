@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import { customErrorResponse, customSuccessResponse } from "../utils/customResponse.js";
-import { getUserFlashcardsService } from "../services/flashcard.service.js";
+import { createFlashcardService, getUserFlashcardsService } from "../services/flashcard.service.js";
 
 function handleError(res, err) {
   if (err.statusCode) {
@@ -19,6 +19,19 @@ export async function getUserFlashcardsController(req, res) {
     res.status(StatusCodes.OK).json(customSuccessResponse("Flashcards fetched successfully", flashcards));
   } 
   catch (err) {
+    handleError(res, err);
+  }
+}
+
+
+export async function createFlashcardController(req, res) {
+  try {
+    const {id} = req.user;
+    const {question, answer} = req.body;
+    const flashcard = await createFlashcardService(id, question, answer);
+    res.status(StatusCodes.CREATED).json(customSuccessResponse("Flashcard created successfully", flashcard));
+  }
+  catch(err){
     handleError(res, err);
   }
 }
