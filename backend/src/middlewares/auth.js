@@ -14,7 +14,7 @@ const authenticate = async (req, res, next) => {
         return res.status(StatusCodes.FORBIDDEN).json(
           customErrorResponse({
             message: 'Missing token',
-            explanation: "NoteApp token isn't provided"
+            explanation: "Access token not provided"
           })
         )
       }
@@ -23,7 +23,7 @@ const authenticate = async (req, res, next) => {
         return res.status(StatusCodes.FORBIDDEN).json(
           customErrorResponse({
             message: 'Invalid token',
-            explanation: 'NoteApp token is invalid'
+            explanation: 'Access token is invalid'
           })
         )
       }
@@ -33,7 +33,7 @@ const authenticate = async (req, res, next) => {
         return res.status(StatusCodes.FORBIDDEN).json(
           customErrorResponse({
             message: 'Invalid token',
-            explanation: 'Slack token is invalid'
+            explanation: 'Access token is invalid'
           })
         )
       }

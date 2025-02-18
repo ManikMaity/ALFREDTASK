@@ -3,6 +3,16 @@ import crudFunctions from "./crud.js";
 
 const flashcardRepo = {
     ...crudFunctions(flashcardModel),
+    getTodaysUserFlashcards : async function (id) {
+        const flashcards = await flashcardModel.find({
+            id : id,
+            nextReviewDate : {
+                $lt : new Date()
+            },
+        })
+
+        return flashcards;
+    }
 }
 
 export default flashcardRepo;
