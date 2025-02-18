@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { signupRequest } from "@/apis/user";
 import { useToast } from "../use-toast";
+import { getErrorMessage } from "@/lib/utilFunc";
 
 function useSignup() {
 
@@ -19,6 +20,7 @@ function useSignup() {
         onError: (error) => {
             toast({
                 title: "Error signing up",
+                description: getErrorMessage(error),
                 type: "error",
             });
         },
