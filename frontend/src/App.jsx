@@ -3,6 +3,7 @@ import "./App.css";
 import AppRoute from "./pages/AppRoute";
 import { Toaster } from "./components/ui/toaster";
 import { ThemeProvider } from "./components/theme-provider";
+import ModalContainer from "./components/organisms/ModalContainer";
 
 function App() {
   const queryClient = new QueryClient();
@@ -12,6 +13,7 @@ function App() {
       <ThemeProvider>
       <AppRoute />
       <Toaster />
+      <ModalContainer/>
       </ThemeProvider>
     </QueryClientProvider>
   );

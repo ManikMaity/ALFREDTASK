@@ -4,7 +4,7 @@ import CardContainer from "@/components/organisms/CardContainer"
 
 function HomePage() {
   return (
-    <main>
+    <main className="flex items-center justify-center">
       <CardContainer/>
       <Header/>
     </main>
