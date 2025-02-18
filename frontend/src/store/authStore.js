@@ -7,11 +7,11 @@ const useAuthStore = create(
       user: null,
       token: null,
 
-      login: (user, token) => set({ user, token}),
+      signin: (user, token) => set({ user, token}),
       logout: () => set({ user: null, token: null}),
     }),
     {
-      name: "auth-storage", 
+      name: "flashcard-auth-storage", 
       getStorage: () => localStorage, 
     }
   )
