@@ -15,12 +15,10 @@ function useSignup() {
         onSuccess: () => {
             toast({
                 title: "Successfully signed up",
-                description: "You will be redirected to signin page in a few seconds",
+                description: "You will be redirected to signin page.",
                 type: "success",
             });
-            setTimeout(() => {
-                navigator("/signin");
-            }, 3000)
+            navigator("/signin");
         },
         onError: (error) => {
             toast({

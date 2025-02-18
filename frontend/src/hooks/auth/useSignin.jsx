@@ -18,14 +18,12 @@ function useSignin() {
          console.log(data);
           toast({
               title: "Signined in Successfully",
-              description: "You will be redirected to home page in a few seconds",
+              description: "You will be redirected to home page.",
               type: "success",
           });
           localStorage.setItem("flashcard-token", data.token);
           signin(data, data.token);
-          setTimeout(() => {
-              navigator("/");
-          }, 2000);
+         navigator("/");
       },
       onError : (error) => {
           toast({

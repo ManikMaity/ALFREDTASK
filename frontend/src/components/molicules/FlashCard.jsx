@@ -67,7 +67,7 @@ export default function FlashCard({ flashcardData }) {
               transform: "rotateY(180deg)",
             }}
           >
-            <p className="text-center break-words">{flashcardData.answer}</p>
+            <p className="text-center break-words text-xl">{flashcardData.answer}</p>
             <div className="flex gap-2">
               <Button
                 size="sm"
